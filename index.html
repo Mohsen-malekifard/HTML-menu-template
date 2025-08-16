@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پیش‌نمایش هدر ثابت</title>
+    <!-- Tailwind CSS را برای استایل‌دهی بارگذاری می‌کند -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- کتابخانه‌های React و ReactDOM را بارگذاری می‌کند -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <!-- Babel را برای تبدیل JSX به جاوااسکریپت بارگذاری می‌کند -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        /* تنظیمات اصلی برای بدنه صفحه */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding-top: 6rem; /* فضای کافی برای هدر ثابت */
+        }
+    </style>
+</head>
+<body>
+    <!-- نقطه اتصال برای برنامه React -->
+    <div id="root"></div>
+
+    <!-- اسکریپت اصلی برنامه با استفاده از Babel -->
+    <script type="text/babel">
+        // کامپوننت React برای هدر ثابت
+        const Header = () => {
+            return (
+                // نوار ناوبری ثابت در بالای صفحه با پس‌زمینه تیره و سایه
+                <header className="fixed top-0 z-50 w-full bg-gray-900 p-4 shadow-lg">
+                    <nav className="flex items-center justify-between mx-auto max-w-7xl">
+                        
+                        {/* لوگو یا نام سایت */}
+                        <div className="text-2xl font-bold text-gray-50 tracking-wider">
+                            My App
+                        </div>
+
+                        {/* دکمه‌های ناوبری */}
+                        <ul className="flex space-x-6 sm:space-x-8">
+                            {/* دکمه Home */}
+                            <li>
+                                <a 
+                                    href="#"
+                                    className="font-medium text-gray-300 hover:text-white transition-colors duration-300
+                                               hover:bg-gray-700 px-4 py-2 rounded-lg"
+                                >
+                                    Home
+                                </a>
+                            </li>
+                            
+                            {/* دکمه Cart */}
+                            <li>
+                                <a 
+                                    href="#"
+                                    className="font-medium text-gray-300 hover:text-white transition-colors duration-300
+                                               hover:bg-gray-700 px-4 py-2 rounded-lg"
+                                >
+                                    Cart
+                                </a>
+                            </li>
+                            
+                            {/* دکمه ProductsList */}
+                            <li>
+                                <a 
+                                    href="#"
+                                    className="font-medium text-gray-300 hover:text-white transition-colors duration-300
+                                               hover:bg-gray-700 px-4 py-2 rounded-lg"
+                                >
+                                    ProductsList
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </header>
+            );
+        };
+
+        // یک کامپوننت اصلی برای نمایش هدر و محتوای آزمایشی
+        const App = () => {
+            return (
+                <div>
+                    {/* هدر را رندر می‌کند */}
+                    <Header />
+
+                    {/* محتوای آزمایشی برای نمایش عملکرد ثابت هدر */}
+                    <main className="container mx-auto p-8">
+                        <div className="text-center text-4xl font-bold mb-4">
+                            محتوای صفحه اصلی
+                        </div>
+                        <p className="text-gray-700 leading-loose">
+                            اینجا محتوای صفحه شما قرار می‌گیرد. با اسکرول کردن به سمت پایین، می‌توانید ببینید که هدر همیشه در بالای صفحه ثابت باقی می‌ماند.
+                        </p>
+                        {/* بلوک‌های آزمایشی برای ایجاد اسکرول */}
+                        {[...Array(10)].map((_, i) => (
+                            <div key={i} className="my-10 p-6 bg-white rounded-lg shadow-md">
+                                <h3 className="text-xl font-semibold mb-2">بخش {i + 1}</h3>
+                                <p className="text-gray-600">
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می‌باشد.
+                                </p>
+                            </div>
+                        ))}
+                    </main>
+                </div>
+            );
+        };
+
+        // کامپوننت App را در DOM رندر می‌کند
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+</html>
